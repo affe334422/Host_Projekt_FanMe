@@ -1,7 +1,7 @@
 
 using Microsoft.Xna.Framework;
 
-public class MinRectangle : QT_Compatible
+public class MinRectangle
 {
     protected Rectangle rectangle;
     protected Vector2 Centrum;
@@ -40,17 +40,4 @@ public class MinRectangle : QT_Compatible
             rectangle.Y=(int)(Centrum.Y-rectangle.Height/2);
         }
     }
-    Vector2 QT_Compatible.CentrumXY()
-    {
-        return centrum;
-    }
-    Rectangle QT_Compatible.GetRectangle()
-    {
-        return rec;
-    }
-    MinRectangle QT_Compatible.GetMinRectangle()
-    {
-        throw new System.NotImplementedException();
-    }
-
 }

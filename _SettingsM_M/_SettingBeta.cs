@@ -1,19 +1,72 @@
 
 
+using System;
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.Xna.Framework;
 
 public class _SettingBeta
 {
-    private List<string> Settings;
+    // true false settings
+
+    private Vector2 startpungt = new Vector2(200,300);
+    // var de skrivs
+    public List<_MinSetRecs> Settings;
     private string Filnamn;
     public _SettingBeta(string Filnamn)
     {
         this.Filnamn = Filnamn;
-        Settings = FilTillList(Filnamn);
+        Settings = Settingsrec(Filnamn);
     }
 
-    List<string> FilTillList(string namnpåfil)
+    
+
+    public void Save()
+    {
+        List<string> bools = new List<string>();
+        foreach(_MinSetRecs recs in Settings)
+        {
+            bools.Add(recs.TrueFalse+"");
+        }
+        ListTillFil(Filnamn,bools);
+    }
+    private List<_MinSetRecs> Settingsrec(string namnpåfil)
+    {
+        List<bool> bools = FilTillBool(namnpåfil);
+        List<_MinSetRecs> setRecs = new List<_MinSetRecs>();
+        MinRectangle min = new MinRectangle(0,0,200,40);
+        foreach(bool bo in bools)
+        {
+            setRecs.Add(new _MinSetRecs(bo,min));
+        }
+        for(int i = 0; i < setRecs.Count; i++)
+        {
+            setRecs[i].centrum=startpungt+new Vector2(0,i*(min.rec.Height+10));
+        }
+        return setRecs;
+    }
+    private List<bool> FilTillBool(string namnpåfil)
+    {
+        List<string> Text = FilTillList(namnpåfil);
+        List<bool> bools = new List<bool>();
+        foreach(string st in Text)
+        {
+            if (st == "True")
+            {
+                bools.Add(true);
+            }
+            else if (st == "False")
+            {
+                bools.Add(false);
+            }
+            else
+            {
+                Console.WriteLine(st);
+            }
+        }
+        return bools;
+    }
+    private List<string> FilTillList(string namnpåfil)
     {
         StreamReader TextFil = new StreamReader(namnpåfil);
         List<string> Text = new List<string>();
@@ -24,7 +77,7 @@ public class _SettingBeta
         TextFil.Close();
         return Text;
     }
-    void ListTillFil(string namnpåfil, List<string> inmatning)
+    private void ListTillFil(string namnpåfil, List<string> inmatning)
     {
         StreamWriter textfil = new StreamWriter(namnpåfil);
         inmatning.ForEach(a=>textfil.WriteLine(a));
@@ -32,3 +85,8 @@ public class _SettingBeta
         return;
     }
 }
+
+// en färg och en position kanske en storlek
+// kan göra en egen lista så jag kan spara till exempel 
+//mer saker i än vad en vanlig list string kan göra. 
+//göra det lättare för mig själv att nå dem

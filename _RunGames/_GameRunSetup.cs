@@ -12,6 +12,7 @@ public abstract class _GameRunSetup
     protected SpriteBatch _spriteBatch;
     protected Camera2D camera2D;
     protected Texture2D texture;
+    public bool Exit = false;
     public _GameRunSetup(GraphicsDeviceManager _graphics, SpriteBatch _spriteBatch, Camera2D camera2D, Texture2D texture)
     {
         this._graphics = _graphics;
@@ -20,6 +21,7 @@ public abstract class _GameRunSetup
         this.texture = texture;
     }
     
-    public abstract void Update();
+    
+    public abstract void Update(GameTime gameTime);
     public abstract void Draw();
 }

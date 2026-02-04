@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Host_Projekt_FanMe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee412ddb2ebec50b3607e62c51206bdfb391d6ea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e73b7bb35a5612b2a750285f3d5f0fa2355293c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Host_Projekt_FanMe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Host_Projekt_FanMe")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -24,3 +24,4 @@ C:\Users\alle07002\OneDrive - Växjö kommun\Skrivbordet\program\Host_Projekt_Fa
 C:\Users\alle07002\OneDrive - Växjö kommun\Skrivbordet\program\Host_Projekt_FanMe\obj\Debug\net8.0-windows\Host_Projekt_FanMe.pdb
 C:\Users\alle07002\OneDrive - Växjö kommun\Skrivbordet\program\Host_Projekt_FanMe\obj\Debug\net8.0-windows\Host_Projekt_FanMe.genruntimeconfig.cache
 C:\Users\alle07002\OneDrive - Växjö kommun\Skrivbordet\program\Host_Projekt_FanMe\obj\Debug\net8.0-windows\ref\Host_Projekt_FanMe.dll
+C:\Users\alle07002\OneDrive - Växjö kommun\Skrivbordet\program\Host_Projekt_FanMe\obj\Debug\net8.0-windows\Host_Projekt_FanMe.sourcelink.json

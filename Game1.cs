@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -42,12 +43,12 @@ public class Game1 : Game
         if (start)
         {
             start=false;
-            _GameRun = new Gamebeta_0_1(_graphics,_spriteBatch,camera2D,texture);
+            _GameRun = new GameQuickTest(_graphics,_spriteBatch,camera2D,texture);
         }
-        _GameRun.Update();
+        _GameRun.Update(gameTime);
 
         
-        if (kstate.IsKeyDown(Keys.Escape)){
+        if (_GameRun.Exit){
             Exit();
         }
         base.Update(gameTime);
