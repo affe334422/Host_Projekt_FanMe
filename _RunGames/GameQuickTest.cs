@@ -11,7 +11,7 @@ public class GameQuickTest : _GameRunSetup
     {
         for(int i = 0; i < 10; i++)
         {
-            Cards.Add(new _MinaNyaKort(Vector2.Zero,10,10,ran.Next(30,100)/10));
+            Cards.Add(new _MinaNyaKort(1,Vector2.Zero,10,10,ran.Next(30,100)/10));
         }
     }
     List<_MinaNyaKort> Cards = new List<_MinaNyaKort>(); 
@@ -22,7 +22,7 @@ public class GameQuickTest : _GameRunSetup
         kstate = Keyboard.GetState();
         if (kstate.IsKeyDown(Keys.Space))
         {
-            Cards.Add(new _MinaNyaKort(Vector2.Zero,10,10,ran.Next(30,100)/10));
+            Cards.Add(new _MinaNyaKort(1,Vector2.Zero,10,10,ran.Next(30,100)/10));
         }
         foreach(_MinaNyaKort kort in Cards)
         {
@@ -45,7 +45,7 @@ public class GameQuickTest : _GameRunSetup
 
             foreach(_MinaNyaKort kort in Cards)
             {
-                _spriteBatch.Draw(texture,kort.rec,Color.Blue);
+                _spriteBatch.Draw(texture,kort.centrum,Color.Blue);
             }
 
         _spriteBatch.End();

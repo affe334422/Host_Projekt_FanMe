@@ -43,7 +43,7 @@ public class Game1 : Game
         if (start)
         {
             start=false;
-            _GameRun = new GameQuickTest(_graphics,_spriteBatch,camera2D,texture);
+            _GameRun = new _GameTestTänkandeRobotar(_graphics,_spriteBatch,camera2D,texture);
         }
         _GameRun.Update(gameTime);
 

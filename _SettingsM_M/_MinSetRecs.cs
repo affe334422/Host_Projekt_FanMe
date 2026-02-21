@@ -1,5 +1,6 @@
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 public class _MinSetRecs : MinRectangle
 {
@@ -26,4 +27,30 @@ public class _MinSetRecs : MinRectangle
     {
         TrueFalse=bol;
     }
+    
+    
+    bool hasntChanged = true;
+    public bool Update()
+    {
+        
+        if (MouseHelper.IsHolding(rec))
+        {
+            if(hasntChanged){
+                hasntChanged = false;
+                TrueFalse = !TrueFalse;
+            }
+        }
+        else
+        {
+            hasntChanged = true;
+        }
+
+        if (MouseHelper.IsHovering(rec))
+        {
+            return true;
+        }
+        return false;
+    }
+    
+
 }

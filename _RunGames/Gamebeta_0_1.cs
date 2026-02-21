@@ -9,20 +9,19 @@ public class Gamebeta_0_1 : _GameRunSetup
         
     }
     _SettingBeta Settings = new _SettingBeta("_Settings0_1.txt");
-    MinRectangle mmouse = new MinRectangle(0,0,10,10);
-    bool mousepress = true;
+    MätaDistansochmer mäta = new MätaDistansochmer();
     bool keypress = true;
     Moment Momen = Moment.Run;
     enum Moment
     {
         Run,
-        Settings
+        Settings,
+        Mäta
     }
     public override void Update(GameTime gameTime)
     {
-        kstate=Keyboard.GetState();
-        mstate=Mouse.GetState();
-        mmouse.centrum=mstate.Position.ToVector2();
+        MouseHelper.Update();
+        kstate = Keyboard.GetState();
         if (kstate.IsKeyDown(Keys.Escape))
         {
             Settings.Save();
@@ -40,24 +39,18 @@ public class Gamebeta_0_1 : _GameRunSetup
             Settings.Save();
             Momen=Moment.Run;
         }
-
+        if (kstate.IsKeyDown(Keys.M) && keypress)
+        {
+            keypress=false;
+            Momen=Moment.Mäta;
+        }
         if (Momen == Moment.Settings)
         {
-            foreach(_MinSetRecs setRecs in Settings.Settings)
-            {
-                if (setRecs.rec.Intersects(mmouse.rec) && mstate.LeftButton == ButtonState.Pressed && mousepress)
-                {
-                    mousepress=false;
-                    if (setRecs.TrueFalse)
-                    {
-                        setRecs.TrueFalse=false;
-                    }
-                    else
-                    {
-                        setRecs.TrueFalse=true;
-                    }
-                }
-            }
+            Settings.Update();
+        }
+        if (Momen == Moment.Mäta)
+        {
+            mäta.Update(mstate);
         }
 
 
@@ -71,15 +64,12 @@ public class Gamebeta_0_1 : _GameRunSetup
         {
             keypress=true;
         }
-        if (mstate.LeftButton == ButtonState.Released)
-        {
-            mousepress=true;
-        }
     }
     public override void Draw()
     {
         _spriteBatch.Begin();
-            if(Momen == Moment.Settings){
+            if(Momen == Moment.Settings||Momen == Moment.Mäta){
+                _spriteBatch.Draw(texture,Settings.rec,Color.Gray);
                 foreach(_MinSetRecs setrec in Settings.Settings){
                     _spriteBatch.Draw(texture,setrec.rec,setrec.Color);
                 }

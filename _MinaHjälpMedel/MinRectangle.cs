@@ -40,4 +40,11 @@ public class MinRectangle
             rectangle.Y=(int)(Centrum.Y-rectangle.Height/2);
         }
     }
+    public void ChangeSize(int Width, int Height)
+    {
+        rectangle.Width = Width;
+        rectangle.Height = Height;
+        rectangle.X=(int)(Centrum.X-rectangle.Width/2);
+        rectangle.Y=(int)(Centrum.Y-rectangle.Height/2);
+    }
 }
