@@ -26,6 +26,7 @@ public class MinRotRect
     }
     public int width{get=>Width;}
     public int height{get=>Height;}
+    public Rectangle rec{get=>new Rectangle((int)centrum.X-Width/2,(int)centrum.Y-Height/2,Width,Height);}
     public float centrum_x
     {
         get => Centrum.X;
@@ -62,7 +63,7 @@ public class MinRotRect
             UppdateraHörn();
         }
     }
-    public Vector2[] horn{get=> Hörn;}
+    public Vector2[] hörn{get=> Hörn;}
     public void ChangeSize(int width, int height)
     {
         Width = width;

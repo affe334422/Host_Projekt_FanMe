@@ -5,4 +5,5 @@ public static class SmåHjälpmedel
 {
     static Random Ran = new Random();
     public static Random ran{get=>Ran;}
+    public static bool Exit = false;
 }

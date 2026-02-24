@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/../../../2D_Sprites/Playing Cards/PNG-cards-1.3/2_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/10_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/10_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/10_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/10_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/2_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/2_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/2_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/3_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/3_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/3_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/3_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/4_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/4_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/4_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/4_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/5_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/5_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/5_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/5_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/6_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/6_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/6_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/6_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/7_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/7_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/7_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/7_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/8_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/8_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/8_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/8_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/9_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/9_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/9_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/9_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/ace_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/ace_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/ace_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/ace_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/card back red.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/jack_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/jack_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/jack_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/jack_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/king_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/king_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/king_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/king_of_spades.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/queen_of_clubs.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/queen_of_diamonds.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/queen_of_hearts.png</File>
+    <File>c:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/queen_of_spades.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>2_of_clubs.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

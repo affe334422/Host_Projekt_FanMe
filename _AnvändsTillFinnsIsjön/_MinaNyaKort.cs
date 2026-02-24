@@ -54,32 +54,63 @@ public class _MinaNyaKort : MinRotRect
 
     private Texture2D Fram;
     private Texture2D Bak;
-    // ändrar den till en array av texture2d för att kunna bestämma lättare vilken av dem som ska vissas. med en int 0 eller 1.
+    public bool VilkenTexture = true;
+    public Texture2D Texture
+    {
+        get
+        {
+            if (VilkenTexture)
+            {
+                return Fram;
+            }
+            return Bak;
+        }
+    }
     private int VadFörKort; // ex spader 2 = 2 och hjärter dam = 12
     public int vadförkort{get=>VadFörKort;}
 
+
+    // Flytta kort när musen rör den.
+    public bool MouseRörKort = false; // Använd den för att välja kort också.
+    private int KortOffset = 20;
+    public Vector2 NärMusRör
+    {
+        get
+        {
+            if(!MouseRörKort){return Vector2.Zero;}
+            float r = MathHelper.ToRadians(90);
+            return new Vector2((float)Math.Cos(Rotation-r)*KortOffset,(float)Math.Sin(Rotation-r)*KortOffset);
+        }
+    }
 
 
 
     private bool IsMoving = false; // kolla på den om du ska göra movetonewpos().
     public bool ismoving{get=>IsMoving;}
-    private float TimeItShouldTake = 5f;
+    public bool stopMoving{set=>IsMoving=value;}
+    private float TimeItShouldTake = 1f;
     private float TempTimeItShouldTake;
     private bool TempTimeGo = false;
     private float elapsedTime;
     public float ElapsedTime{get=>elapsedTime;}
     public float TimeitShouldTake{get=>TimeItShouldTake;set=>TimeItShouldTake=value;}
+    private float StartRotation;
+    private float EndRotation;
     private Vector2 startPos;
     private Vector2 endPos;
-    public void MoveTo(Vector2 NewPos)
+    public void MoveTo(Vector2 NewPos,float NewRot)
     {
+        StartRotation = Rotation;
+        EndRotation = NewRot+MathHelper.ToRadians(90);
         IsMoving=true;
         startPos = centrum;
         endPos=NewPos;
         elapsedTime = 0;
     }
-    public void MoveTo(Vector2 NewPos,float TempTid)
+    public void MoveTo(Vector2 NewPos,float NewRot,float TempTid)
     {
+        StartRotation = Rotation;
+        EndRotation = NewRot+MathHelper.ToRadians(90);
         IsMoving=true;
         startPos = centrum;
         endPos=NewPos;
@@ -87,7 +118,6 @@ public class _MinaNyaKort : MinRotRect
         TempTimeGo=true;
         elapsedTime = 0;
     }
-    
     public void MoveToNewPos()
     {
         elapsedTime += 0.01666f;
@@ -97,6 +127,7 @@ public class _MinaNyaKort : MinRotRect
             {
                 IsMoving=false;
                 centrum = endPos;
+                Rotation=EndRotation;
                 TempTimeGo=false;
                 return;
             }
@@ -105,6 +136,7 @@ public class _MinaNyaKort : MinRotRect
         {
             IsMoving=false;
             centrum = endPos;
+            Rotation=EndRotation;
             return;
         }
 
@@ -121,6 +153,7 @@ public class _MinaNyaKort : MinRotRect
         // Cubic ease in/out: smooth start and stop
         float smoothT = 3*t*t - 2*t*t*t;
         // Calculate current position
+        Rotation = StartRotation + (EndRotation - StartRotation) * smoothT;
         centrum = startPos + (endPos - startPos) * smoothT;
     }
 }

@@ -9,7 +9,7 @@ public class Gamebeta_0_1 : _GameRunSetup
         
     }
     _SettingBeta Settings = new _SettingBeta("_Settings0_1.txt");
-    MätaDistansochmer mäta = new MätaDistansochmer();
+    
     bool keypress = true;
     Moment Momen = Moment.Run;
     enum Moment
@@ -50,7 +50,7 @@ public class Gamebeta_0_1 : _GameRunSetup
         }
         if (Momen == Moment.Mäta)
         {
-            mäta.Update(mstate);
+            
         }
 
 

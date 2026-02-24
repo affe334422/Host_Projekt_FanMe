@@ -6,6 +6,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 public class _HandMedKort
 {
+    public _HandMedKort(Vector2 Position,List<_MinaNyaKort> ListMedKort)
+    {
+        foreach(_MinaNyaKort Kort in ListMedKort)
+        {
+            Kort.centrum=Position;
+        }
+        this.ListMedKort = ListMedKort;
+        
+    }
     public _HandMedKort()
     {
         
@@ -43,9 +52,19 @@ public class _HandMedKort
     
     private List<_MinaNyaKort> ListMedKort = new List<_MinaNyaKort>();
     public List<_MinaNyaKort> Listmedkort{get=>ListMedKort;}
+    public int Count{get=>ListMedKort.Count;}
 
     public void Update()
     {
+        ListMedKort.ForEach(K=>K.MouseRörKort=false);
+        for(int i = ListMedKort.Count-1;i>=0;i--)
+        {
+            if (ListMedKort[i].Contains(MouseHelper.CurretPosition()))//för att flytta kortet om musen rör det
+            {
+                ListMedKort[i].MouseRörKort=true;
+                break;
+            }
+        }
         foreach(_MinaNyaKort kort in ListMedKort)
         {
             if (kort.ismoving)
@@ -66,6 +85,14 @@ public class _HandMedKort
     {
         if(nyKort == null){return;}
         ListMedKort.Add(nyKort);
+    }
+    public _MinaNyaKort TaRandomKort()
+    {
+        if(Listmedkort.Count==0){return null;}
+        int a = SmåHjälpmedel.ran.Next(0,ListMedKort.Count);
+        _MinaNyaKort kort = ListMedKort[a];
+        ListMedKort.RemoveAt(a);
+        return kort;
     }
     public _MinaNyaKort TaToppenAvHand()
     {

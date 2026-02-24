@@ -28,7 +28,7 @@ public class GameQuickTest : _GameRunSetup
         {
             if (!kort.ismoving)
             {
-                kort.MoveTo(new Vector2(ran.Next(0,1801),ran.Next(0,1001)));
+                kort.MoveTo(new Vector2(ran.Next(0,1801),ran.Next(0,1001)),0);
             }
             else
             {
