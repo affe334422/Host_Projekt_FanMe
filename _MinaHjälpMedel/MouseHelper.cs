@@ -52,6 +52,8 @@ public static class MouseHelper
     }
     public static Vector2 CurretPosition()
     {
+        Console.WriteLine(current.Position);
         return current.Position.ToVector2();
+        
     }
 }
