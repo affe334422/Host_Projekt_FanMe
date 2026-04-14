@@ -5,20 +5,7 @@ using Microsoft.Xna.Framework.Input;
 public class _MinSetRecs : MinRectangle
 {
     public bool TrueFalse;
-    public Color Color
-    {
-        get
-        {
-            if (TrueFalse)
-            {
-                return Color.Green;
-            }
-            else
-            {
-                return Color.Red;
-            }
-        }
-    }
+    public Color Color{get=>TrueFalse?Color.Green:Color.Red;}
     public _MinSetRecs(bool bol, int x, int y, int width,int height) : base(x,y,width,height)
     {
         TrueFalse=bol;
@@ -29,7 +16,7 @@ public class _MinSetRecs : MinRectangle
     }
     
     
-    bool hasntChanged = true;
+    private bool hasntChanged = true;
     public bool Update()
     {
         

@@ -33,7 +33,11 @@ public class _GameTestTänkandeRobotar : _GameRunSetup
         FinnsDetIsjönNästaspelare,
         FinnsDetIsjönDuIgen,
         HarDenFrågadeKortet,
+        HarDuKort,
     }
+    
+    _NyaBotar dittval1 = null;
+    _MinaNyaKort dittval2 = null;
     public override void Update(GameTime gameTime)
     {
         kstate = Keyboard.GetState();
@@ -49,17 +53,66 @@ public class _GameTestTänkandeRobotar : _GameRunSetup
             }
             Wait.Start();
             framesperSec.Start();
-            sekvens = BotSekvens.HarBotenKort;
+            sekvens = BotSekvens.HarDuKort;
         }
 
-
         
+        
+        if(sekvens == BotSekvens.HarDuKort)
+        {
+            if (PB[VilkensTur].MinaKort.Count > 0)
+            {
+                //Här väljer du kort.
+                if (!UsedAsKonstants.DuHarValtKort)
+                {
+                    foreach(_MinaNyaKort kort in PB[VilkensTur].MinaKort.Listmedkort)
+                    {
+                        if (kort.MouseRörKort && kort.Contains(MouseHelper.CurretPosition()))
+                        {
+                            if (MouseHelper.Click())
+                            {
+                                UsedAsKonstants.DuHarValtKort=true;
+                                dittval2=kort;
+                            }
+                        }
+                        
+                    }
+                }
+                if(!UsedAsKonstants.DuHarValtSpelare)
+                {
+                    // välj en spelare förutom dig själv.
+                    foreach(_NyaBotar botar in PB)
+                    {
+                        if (botar == PB[VilkensTur])
+                        {
+                            continue;
+                        }
+                        botar.DennaspelareVald();
+                        if (botar.DennaSpelVald)
+                        {
+                            dittval1=botar;
+                        } 
+                    }
+                }
+
+                if(dittval2!=null&&dittval1!=null){
+                    PB[VilkensTur].BotOchKort=new play_kort(dittval1,dittval2);
+                    sekvens= BotSekvens.HarDenFrågadeKortet;
+                }
+                
+            }
+            else
+            {
+                sekvens= BotSekvens.FinnsDetIsjönDuIgen;
+            }
+        }
 
 
 
         // spel sekvens som också har animationen det är derför den har en tidsgräns
         if(Wait.ElapsedMilliseconds>TimeToWait){
             Wait.Restart();
+
             if (sekvens == BotSekvens.HarBotenKort)
             {
                 if (PB[VilkensTur].MinaKort.Count > 0)
@@ -72,24 +125,50 @@ public class _GameTestTänkandeRobotar : _GameRunSetup
                     sekvens= BotSekvens.FinnsDetIsjönDuIgen;
                 }
             }
+
             if (sekvens == BotSekvens.FinnsDetIsjönNästaspelare)
             {
                 PB[VilkensTur].Add(Kortlek.TaRandomKort());
                 //kolla fyra;
-                NästaSpelare();
                 sekvens = BotSekvens.HarBotenKort;
+                NästaSpelare();
             }
+
             if (sekvens == BotSekvens.FinnsDetIsjönDuIgen)
             {
-                PB[VilkensTur].Add(Kortlek.TaRandomKort());
-                sekvens = BotSekvens.HarBotenKort;
+                if(Kortlek.Count>0){
+                    PB[VilkensTur].Add(Kortlek.TaRandomKort());
+                    if (VilkensTur == 0)
+                    {
+                        SetKonstants();
+                        sekvens= BotSekvens.HarDuKort;
+                    }
+                    else
+                    {
+                        sekvens = BotSekvens.HarBotenKort;
+                    }
+                }
+                else
+                {
+                    sekvens = BotSekvens.HarBotenKort;
+                    NästaSpelare();
+                }
             }
+
             if(sekvens == BotSekvens.HarDenFrågadeKortet)
             {
                 if (HjälpFrågaEfterKort(PB[VilkensTur], PB[VilkensTur].botochkort))
                 {
                     //kolla fyra;
-                    sekvens = BotSekvens.HarBotenKort;
+                    if (VilkensTur == 0)
+                    {
+                        SetKonstants();
+                        sekvens = BotSekvens.HarDuKort;
+                    }
+                    else
+                    {
+                        sekvens = BotSekvens.HarBotenKort;
+                    }
                 }
                 else
                 {
@@ -100,7 +179,7 @@ public class _GameTestTänkandeRobotar : _GameRunSetup
 
 
         // sätta animation och allat till 0 så det inte är nån vänte tid.
-        if (MouseHelper.Click())
+        if (MouseHelper.Click()&&false)
         {
             TimeToWait=0f;
             foreach(_NyaBotar NB in PB)
@@ -124,6 +203,7 @@ public class _GameTestTänkandeRobotar : _GameRunSetup
             PP.Update();
             PP.MinaKort.Sortera();
             PP.PlaseraKorten();
+            Fåttpoäng(PP);
         }
         if (kstate.IsKeyDown(Keys.Escape))
         {
@@ -134,7 +214,6 @@ public class _GameTestTänkandeRobotar : _GameRunSetup
     public override void Draw()
     {
         _spriteBatch.Begin();
-            _spriteBatch.Draw(texture,MouseHelper.CurretPosition(),new Rectangle(0,0,1,1),Color.White,2f,new Vector2(0.5f,0.5f),(float)100/texture.Width,SpriteEffects.None,1f);
             foreach(_MinaNyaKort kort in Kortlek.Listmedkort)
             {
                 _spriteBatch.Draw(kort.Texture,kort.centrum,null,Color.White,kort.rotation,new Vector2(kort.Texture.Width/2,kort.Texture.Height/2),(float)kort.width/kort.Texture.Width,SpriteEffects.None,1f);
@@ -145,17 +224,39 @@ public class _GameTestTänkandeRobotar : _GameRunSetup
                 {
                     _spriteBatch.Draw(kort.Texture,kort.centrum+kort.NärMusRör,null,Color.White,kort.rotation,new Vector2(kort.Texture.Width/2,kort.Texture.Height/2),(float)kort.width/kort.Texture.Width,SpriteEffects.None,1f);
                 }
+                foreach(_MinaNyaKort kort in NB.FyraHögarna.Listmedkort)
+                {
+                    _spriteBatch.Draw(kort.Texture,kort.centrum+kort.NärMusRör,null,Color.White,kort.rotation,new Vector2(kort.Texture.Width/2,kort.Texture.Height/2),(float)kort.width/kort.Texture.Width,SpriteEffects.None,1f);
+                }
+                foreach(Vector2 ve in NB.InteraktWithBot.hörn)
+                {
+                    if (NB.DennaSpelVald)
+                    {
+                        _spriteBatch.Draw(texture,ve,Color.Red);
+                        continue;
+                    }
+                    _spriteBatch.Draw(texture,ve,Color.White);
+                }
             }
             
         _spriteBatch.End();
     }
 
+    private void SetKonstants()
+    {
+        UsedAsKonstants.DuHarValtKort=false;
+        UsedAsKonstants.DuHarValtSpelare=false;
+        dittval1 = null;
+        dittval2 = null;
+    }
     public void NästaSpelare()
     {
         VilkensTur++;
         if (VilkensTur >= PB.Count)
         {
             VilkensTur=0;
+            SetKonstants();
+            sekvens= BotSekvens.HarDuKort;
         }
     }
     public _NyaBotar VäljRandomSpelareFörutomDigSjälv(_NyaBotar du)
@@ -256,6 +357,22 @@ public class _GameTestTänkandeRobotar : _GameRunSetup
             return false;
         }
         return true;
+    }
+    public void Fåttpoäng(_NyaBotar Vem)
+    {
+        foreach(int KV in KortsVärde)
+        {
+            if (Vem.MinaKort.HurMångaLika(KV) == 4)
+            {
+                Vem.Poäng++;
+                foreach(_MinaNyaKort kort in Vem.MinaKort.FindAll(KV))
+                {
+                    kort.MoveTo(Vem.FyraHögarPos,Vem.rotation);
+                }
+                Vem.MinaKort.FindAll(KV).ForEach(K=>Vem.FyraHögarna.Add(K));
+                Vem.MinaKort.RemoveAll(KV);
+            }
+        }
     }
 }
 

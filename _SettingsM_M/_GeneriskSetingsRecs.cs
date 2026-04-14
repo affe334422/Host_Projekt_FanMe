@@ -1,28 +1,23 @@
 
-
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
 
-public class _SettingBeta
+public class _GeneriskSetingsRecs
 {
-    // true false settings
-
-    private MinRectangle startpungt = new MinRectangle(new Vector2(200,300),1,1);
-    // var de skrivs
-    public List<_MinSetRecs> Settings;
     private string Filnamn;
-    MinRectangle SizeOfSettings = new MinRectangle(0,0,200,40);
-    // (40 + 10) * settings.count 12st = hieght
-    public _SettingBeta(string Filnamn)
+    private MinRectangle startpungt = new MinRectangle(new Vector2(200,300),1,1);
+    public Rectangle rec{get=>startpungt.rec;}
+    private MinRectangle SizeOfSettings = new MinRectangle(0,0,200,40);
+    public List<_MinGenSetRecs> Settings;
+    public _GeneriskSetingsRecs(string Filnamn)
     {
         this.Filnamn = Filnamn;
         Settings = Settingsrec(Filnamn);
         SettingsBox();
     }
-
     bool interactingWithSetting = false;
     bool Interactingwithsettingsbox = false;
     public void Update()
@@ -33,7 +28,7 @@ public class _SettingBeta
             Interactingwithsettingsbox = false;
         }
         if(!Interactingwithsettingsbox){
-            foreach (_MinSetRecs setRecs in Settings)
+            foreach (_MinGenSetRecs setRecs in Settings)
             {
                 if (setRecs.Update())
                 {
@@ -48,22 +43,20 @@ public class _SettingBeta
             HandleDrag();
         }
     }
-
     private void HandleDrag()
     {
 
         if (MouseHelper.isPressed())
         {
             Vector2 delta = MouseHelper.CurretPosition() - MouseHelper.PreviousPosition();
-            
+
             startpungt.centrum += delta;
 
-            foreach (_MinSetRecs setrecs in Settings)
+            foreach (_MinGenSetRecs setrecs in Settings)
                 setrecs.centrum += delta;
 
         }
     }
-    public Rectangle rec{get=>startpungt.rec;}
     private void SettingsBox()
     {
         startpungt.centrum = Settings.Last().centrum-Settings.First().centrum;
@@ -72,22 +65,13 @@ public class _SettingBeta
         startpungt.ChangeSize(SizeOfSettings.rec.Width+20,(SizeOfSettings.rec.Height+10)*Settings.Count+20);
         Console.WriteLine(rec+"");
     }
-    public void Save()
+    private List<_MinGenSetRecs> Settingsrec(string namnpåfil)
     {
-        List<string> bools = new List<string>();
-        foreach(_MinSetRecs recs in Settings)
+        List<int> ints = FilTillInt(namnpåfil);
+        List<_MinGenSetRecs> setRecs = new List<_MinGenSetRecs>();
+        foreach(int i in ints)
         {
-            bools.Add(recs.TrueFalse+"");
-        }
-        ListTillFil(Filnamn,bools);
-    }
-    private List<_MinSetRecs> Settingsrec(string namnpåfil)
-    {
-        List<bool> bools = FilTillBool(namnpåfil);
-        List<_MinSetRecs> setRecs = new List<_MinSetRecs>();
-        foreach(bool bo in bools)
-        {
-            setRecs.Add(new _MinSetRecs(bo,SizeOfSettings));
+            setRecs.Add(new _MinGenSetRecs(i,SizeOfSettings));
         }
         for(int i = 0; i < setRecs.Count; i++)
         {
@@ -95,26 +79,16 @@ public class _SettingBeta
         }
         return setRecs;
     }
-    private List<bool> FilTillBool(string namnpåfil)
+    private List<int> FilTillInt(string namnpåfil)
     {
         List<string> Text = FilTillList(namnpåfil);
-        List<bool> bools = new List<bool>();
+        List<int> ints = new List<int>(); // fel ska ny vara generisk
         foreach(string st in Text)
         {
-            if (st == "True")
-            {
-                bools.Add(true);
-            }
-            else if (st == "False")
-            {
-                bools.Add(false);
-            }
-            else
-            {
-                Console.WriteLine(st);
-            }
+            try{ints.Add(int.Parse(st));}
+            catch{Console.WriteLine(st);}
         }
-        return bools;
+        return ints;
     }
     private List<string> FilTillList(string namnpåfil)
     {
@@ -134,13 +108,14 @@ public class _SettingBeta
         textfil.Close();
         return;
     }
+    public void Save()
+    {
+        List<string> bools = new List<string>();
+        foreach(_MinGenSetRecs recs in Settings)
+        {
+            bools.Add(recs.Value+"");
+        }
+        ListTillFil(Filnamn,bools);
+    }
+
 }
-
-// en färg och en position kanske en storlek
-// kan göra en egen lista så jag kan spara till exempel 
-//mer saker i än vad en vanlig list string kan göra. 
-//göra det lättare för mig själv att nå dem
-
-   
-    
-

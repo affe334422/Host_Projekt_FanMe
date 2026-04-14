@@ -24,6 +24,14 @@ public class MinRotRect
         Rotation = 0f;
         UppdateraHörn();
     }
+    public MinRotRect(float Rotation, Vector2 xy, int width, int height)
+    {
+        Centrum = xy;
+        Width = width;
+        Height = height;
+        this.Rotation = Rotation;
+        UppdateraHörn();
+    }
     public int width{get=>Width;}
     public int height{get=>Height;}
     public Rectangle rec{get=>new Rectangle((int)centrum.X-Width/2,(int)centrum.Y-Height/2,Width,Height);}

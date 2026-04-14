@@ -8,7 +8,7 @@ public class Gamebeta_0_1 : _GameRunSetup
     {
         
     }
-    _SettingBeta Settings = new _SettingBeta("_Settings0_1.txt");
+    _GeneriskSetingsRecs Settings = new _GeneriskSetingsRecs("_TestTextFil_");
     
     bool keypress = true;
     Moment Momen = Moment.Run;
@@ -20,7 +20,6 @@ public class Gamebeta_0_1 : _GameRunSetup
     }
     public override void Update(GameTime gameTime)
     {
-        MouseHelper.Update();
         kstate = Keyboard.GetState();
         if (kstate.IsKeyDown(Keys.Escape))
         {
@@ -70,7 +69,7 @@ public class Gamebeta_0_1 : _GameRunSetup
         _spriteBatch.Begin();
             if(Momen == Moment.Settings||Momen == Moment.Mäta){
                 _spriteBatch.Draw(texture,Settings.rec,Color.Gray);
-                foreach(_MinSetRecs setrec in Settings.Settings){
+                foreach(_MinGenSetRecs setrec in Settings.Settings){
                     _spriteBatch.Draw(texture,setrec.rec,setrec.Color);
                 }
             }

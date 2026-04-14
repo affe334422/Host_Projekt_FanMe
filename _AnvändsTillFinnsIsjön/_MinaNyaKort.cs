@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -28,24 +29,6 @@ public class _MinaNyaKort : MinRotRect
     {
         this.Fram = Fram;
         this.Bak = Bak;
-        this.VadFörKort = Vadförkort;
-        this.TimeItShouldTake = TimeItShouldTake;
-    }
-    public _MinaNyaKort(int Vadförkort, int x, int y, int width,int height) : base(x,y,width,height)
-    {
-        this.VadFörKort = Vadförkort;
-    }
-    public _MinaNyaKort(int Vadförkort, Vector2 xy,int width,int height) : base(xy,width,height)
-    {
-        this.VadFörKort = Vadförkort;
-    }
-    public _MinaNyaKort(int Vadförkort, int x, int y, int width,int height,float TimeItShouldTake) : base(x,y,width,height)
-    {
-        this.VadFörKort = Vadförkort;
-        this.TimeItShouldTake = TimeItShouldTake;
-    }
-    public _MinaNyaKort(int Vadförkort, Vector2 xy,int width,int height,float TimeItShouldTake) : base(xy,width,height)
-    {
         this.VadFörKort = Vadförkort;
         this.TimeItShouldTake = TimeItShouldTake;
     }

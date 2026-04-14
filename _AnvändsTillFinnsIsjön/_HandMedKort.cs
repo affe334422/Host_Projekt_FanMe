@@ -19,21 +19,7 @@ public class _HandMedKort
     {
         
     }
-    public _HandMedKort(int AntalKort, Vector2 Position)
-    {
-        int s = 4; // kanske funkar vem vet.
-        int b = 2;
-        for(int i = 0; i < AntalKort; i++)
-        {
-            ListMedKort.Add(new _MinaNyaKort(b,Position,10*2,10*3));
-            s--;
-            if (s == 0)
-            {
-                b++;
-                s=4;
-            }
-        }
-    }
+    
     public _HandMedKort(List<Texture2D> Frams, Texture2D Bak, Vector2 Position)
     {
         int s = 4; // kanske funkar vem vet.
@@ -56,13 +42,15 @@ public class _HandMedKort
 
     public void Update()
     {
-        ListMedKort.ForEach(K=>K.MouseRörKort=false);
-        for(int i = ListMedKort.Count-1;i>=0;i--)
-        {
-            if (ListMedKort[i].Contains(MouseHelper.CurretPosition()))//för att flytta kortet om musen rör det
+        if(!UsedAsKonstants.DuHarValtKort){
+            ListMedKort.ForEach(K=>K.MouseRörKort=false);
+            for(int i = ListMedKort.Count-1;i>=0;i--)
             {
-                ListMedKort[i].MouseRörKort=true;
-                break;
+                if (ListMedKort[i].Contains(MouseHelper.CurretPosition()))//för att flytta kortet om musen rör det
+                {
+                    ListMedKort[i].MouseRörKort=true;
+                    break;
+                }
             }
         }
         foreach(_MinaNyaKort kort in ListMedKort)
@@ -166,6 +154,30 @@ public class _HandMedKort
             }
         }
         return count;
+    }
+    public List<_MinaNyaKort> FindAll(int vadförkort)
+    {
+        List<_MinaNyaKort> RList = new List<_MinaNyaKort>();
+        foreach(_MinaNyaKort kort in ListMedKort)
+        {
+            if (kort.vadförkort == vadförkort)
+            {
+                RList.Add(kort);
+            }
+        }
+        return RList;
+    }
+    public void RemoveAll(int vadförkort)
+    {
+        List<int> ints = new List<int>();
+        for(int i = ListMedKort.Count - 1; i >= 0; i--)
+        {
+            if (ListMedKort[i].vadförkort == vadförkort)
+            {
+                ints.Add(i);
+            }
+        }
+        ints.ForEach(I=>ListMedKort.RemoveAt(I));
     }
     public void Blanda()
     {

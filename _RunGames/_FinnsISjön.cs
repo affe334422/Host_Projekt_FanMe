@@ -6,8 +6,6 @@ public class _FinnsISjön : _GameRunSetup
 {
     public _FinnsISjön(GraphicsDeviceManager _graphics, SpriteBatch _spriteBatch, Camera2D camera2D, Texture2D texture):base(_graphics, _spriteBatch, camera2D, texture)
     {
-        KortLek = new _HandMedKort(52,new Vector2(200,200));
-        KortLek.Blanda();
         Vector2 v = new Vector2(400,0);
         P1 = new _NyaBotar(CentrumAvPlan-v,CentrumAvPlan);
         P2 = new _NyaBotar(CentrumAvPlan+v,CentrumAvPlan);

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -6,13 +7,29 @@ public static class MouseHelper
 {
     private static MouseState current;
     private static MouseState previous;
+    private static Stopwatch MouseWatch = new Stopwatch();
 
     public static void Update()
     {
         previous = current;
         current = Mouse.GetState();
+        if (isPressed())
+        {
+            if (!MouseWatch.IsRunning)
+            {
+                MouseWatch.Restart();
+            }
+        }
+        if (isReleased())
+        {
+            MouseWatch.Reset();
+        }
     }
 
+    public static Stopwatch TimePressed()
+    {
+        return MouseWatch;
+    }
     public static bool IsHovering(Rectangle rect)
     {
         return rect.Contains(current.Position);

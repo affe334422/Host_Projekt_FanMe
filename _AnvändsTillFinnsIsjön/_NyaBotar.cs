@@ -5,9 +5,32 @@ using Microsoft.Xna.Framework;
 
 public class _NyaBotar
 {
+    public _NyaBotar(Vector2 Position, Vector2 CentrumAvPlan)
+    {
+        this.Position=Position;
+        Rotation = (float)Math.Atan2(CentrumAvPlan.Y-Position.Y,CentrumAvPlan.X-Position.X);
+        FyraHögarnaRot+=Rotation;
+        FyraHögarPos=Position+new Vector2((float)Math.Cos(FyraHögarnaRot)*DistansFrånPos,(float)Math.Sin(FyraHögarnaRot)*DistansFrånPos);
+        InteraktWithbot = new MinRotRect(Rotation,Position,200,Distans+200);
+        MinaKort=new _HandMedKort();
+    }
+    private MinRotRect InteraktWithbot;
+    public MinRotRect InteraktWithBot{get=>InteraktWithbot;}
+    public bool Contains(Vector2 Punkt)
+    {
+        return InteraktWithbot.Contains(Punkt);
+    }
+    
     private Vector2 Position;
     private float Rotation; // till Kortleken eller till centrum.
-    public _HandMedKort MinaKort;
+    public Vector2 position{get=>Position;}
+    public float rotation{get=>Rotation;}
+    public _HandMedKort MinaKort; // spara vilka kort
+    public _HandMedKort FyraHögarna = new _HandMedKort(); // ska sparas också.
+    public Vector2 FyraHögarPos;
+    private float FyraHögarnaRot = MathHelper.ToRadians(20);
+    private int DistansFrånPos = 200;
+
     public void Add(_MinaNyaKort kort)
     {
         if (kort != null)
@@ -24,15 +47,23 @@ public class _NyaBotar
             PlaseraKorten();
         }
     }
-    public _NyaBotar(Vector2 Position, Vector2 CentrumAvPlan)
+    
+    private int Distans = 400; // Settings
+    public int Poäng = 0; // ska vara sparad
+    private bool DennaSpelareVald = false;
+    public bool DennaSpelVald{get=>DennaSpelareVald;}
+    public void DennaspelareVald()
     {
-        this.Position=Position;
-        Rotation = (float)Math.Atan2(CentrumAvPlan.Y-Position.Y,CentrumAvPlan.X-Position.X);
-        MinaKort=new _HandMedKort();
+        if (InteraktWithbot.Contains(MouseHelper.CurretPosition()))
+        {
+            if(MouseHelper.Click()){
+                DennaSpelareVald = true;
+                UsedAsKonstants.DuHarValtSpelare=true;
+            }
+            return;
+        }
+        DennaSpelareVald=false;
     }
-
-    private int Distans = 400;
-
     public void PlaseraKorten()
     {
         int count = MinaKort.Listmedkort.Count; // antal kort
@@ -71,17 +102,18 @@ public class _NyaBotar
             }
         }
     }
-
-    public Vector2 position{get=>Position;}
-    public float rotation{get=>Rotation;}
-
     public void Update()
     {
+        if(!UsedAsKonstants.DuHarValtSpelare){DennaSpelareVald=false;}
         MinaKort.Update();
+        FyraHögarna.Update();
     }
     public play_kort BotOchKort;
     public play_kort botochkort{get=>BotOchKort;}
     // kan skapa en stopwatch för att göra så att de "tänker" längsammare. göra det en random int när man skappar boten.
     private int Tankesätt = 0; // ändra den så tanke sättet sätts när den skappas eller beroende på svåroghets graden.
     public int TankeSätt{get=>Tankesätt;}
+
+
+
 }
