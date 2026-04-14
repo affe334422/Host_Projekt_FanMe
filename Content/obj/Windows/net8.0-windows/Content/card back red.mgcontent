@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/GitHub/Content/card back red.png</SourceFile>
-  <SourceTime>2026-03-26T11:04:09.1491647+01:00</SourceTime>
-  <DestFile>C:/GitHub/Content/bin/Windows/Content/card back red.xnb</DestFile>
-  <DestTime>2026-04-07T14:30:46.6093932+02:00</DestTime>
+  <SourceFile>C:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/card back red.png</SourceFile>
+  <SourceTime>2025-04-07T08:47:05.4739905+02:00</SourceTime>
+  <DestFile>C:/Users/alle07002/OneDrive - Växjö kommun/Skrivbordet/program/Host_Projekt_FanMe/Content/bin/Windows/Content/card back red.xnb</DestFile>
+  <DestTime>2026-04-14T13:41:52.107693+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

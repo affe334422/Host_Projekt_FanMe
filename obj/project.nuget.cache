@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Nmn9B8k8Mz0=",
+  "dgSpecHash": "2MzPIDQ2QKg=",
   "success": true,
-  "projectFilePath": "C:\\GitHub\\Host_Projekt_FanMe.csproj",
+  "projectFilePath": "C:\\Users\\alle07002\\OneDrive - Växjö kommun\\Skrivbordet\\program\\Host_Projekt_FanMe\\Host_Projekt_FanMe.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alle07002\\.nuget\\packages\\microsoft.netcore.app\\2.1.30\\microsoft.netcore.app.2.1.30.nupkg.sha512",
     "C:\\Users\\alle07002\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.30\\microsoft.netcore.dotnetapphost.2.1.30.nupkg.sha512",
@@ -71,15 +71,5 @@
     "C:\\Users\\alle07002\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\alle07002\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
-      "projectPath": "C:\\GitHub\\Host_Projekt_FanMe.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\GitHub\\Host_Projekt_FanMe.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }
