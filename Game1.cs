@@ -11,8 +11,6 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     private Camera2D camera2D;
     private Texture2D texture;
-    private KeyboardState kstate;
-    private MouseState mstate;
     _GameRunSetup _GameRun;
     bool start = true;
 
@@ -57,7 +55,6 @@ public class Game1 : Game
     protected override void Update(GameTime gameTime)
     {
         MouseHelper.Update();
-        kstate = Keyboard.GetState();
         if (start)
         {
             start=false;
